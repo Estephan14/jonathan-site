@@ -136,11 +136,38 @@ a {
   padding: 2rem 1.5rem;
 }
 
+/* Circular avatar. Works whether it's a <div> with initials or an <img> photo. */
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;          /* perfect circle */
+  object-fit: cover;           /* if it's a photo, crop it neatly to fill */
+  background-color: var(--bg-soft);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  /* The next three lines centre the initials inside the circle. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
 .hero-eyebrow {
   font-family: 'JetBrains Mono', monospace;
   color: var(--accent);
   font-size: 0.95rem;
   margin-bottom: 1rem;
+}
+
+/* The "📍 Berlin · Open to opportunities" line under the tagline. */
+.hero-location {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
 }
 
 .hero-name {
@@ -211,6 +238,31 @@ a {
   color: var(--text-muted);
   margin-bottom: 1rem;
   font-size: 1.05rem;
+}
+
+
+/* ---------------------------------------------------------------------------
+   6b. SKILLS (the rounded "pill" tags)
+--------------------------------------------------------------------------- */
+.skill-tags {
+  list-style: none;        /* remove the default bullet points */
+  display: flex;
+  flex-wrap: wrap;         /* tags wrap onto new lines as needed */
+  gap: 0.75rem;            /* space between tags */
+}
+
+.skill-tags li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;    /* a very large radius = fully rounded "pill" shape */
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.skill-tags li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 
