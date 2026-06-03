@@ -1,0 +1,349 @@
+/* ===========================================================================
+   styles.css  —  all the LOOKS for the site
+   ===========================================================================
+   Reading order of this file:
+     1. Variables (colours/sizes) + light/dark themes
+     2. Global resets & base styles
+     3. Header
+     4. Hero
+     5. Generic section styles
+     6. About
+     7. Projects
+     8. Contact
+     9. Footer
+    10. Mobile responsiveness (media query)
+   =========================================================================== */
+
+
+/* ---------------------------------------------------------------------------
+   1. VARIABLES (a.k.a. "custom properties")
+   ---------------------------------------------------------------------------
+   These are reusable values. Define a colour once here, use it everywhere.
+   Change a value in one place -> the whole site updates. Very handy.
+
+   ':root' means "the whole document". These are the DARK theme defaults.
+--------------------------------------------------------------------------- */
+:root {
+  --bg: #0d1117;            /* page background (dark) */
+  --bg-soft: #161b22;       /* slightly lighter panels/cards */
+  --text: #e6edf3;          /* main text colour */
+  --text-muted: #8b949e;    /* dimmer text for less important things */
+  --accent: #58a6ff;        /* the "techy" highlight blue */
+  --border: #30363d;        /* subtle lines/borders */
+  --radius: 14px;           /* how rounded corners are */
+  --max-width: 760px;       /* keeps text from stretching too wide on big screens */
+}
+
+/* When <html> has the class "light", we OVERRIDE the variables above.
+   script.js adds/removes this class when the toggle is clicked. */
+html.light {
+  --bg: #ffffff;
+  --bg-soft: #f5f7fa;
+  --text: #1a1a1a;
+  --text-muted: #5c6670;
+  --accent: #0969da;
+  --border: #e2e6ea;
+}
+
+
+/* ---------------------------------------------------------------------------
+   2. GLOBAL RESETS & BASE STYLES
+--------------------------------------------------------------------------- */
+
+/* The '*' selector targets EVERY element. This resets default spacing so
+   different browsers all start from the same place. box-sizing:border-box
+   makes width/padding math intuitive. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Makes clicking a nav link (e.g. #about) scroll smoothly instead of jumping. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;   /* main text font */
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;                               /* space between lines, for readability */
+  /* 'transition' animates the colour change when toggling light/dark. */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Remove the default underline from links; we style them ourselves. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ---------------------------------------------------------------------------
+   3. HEADER (sticky top bar)
+--------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;       /* stays pinned to the top as you scroll */
+  top: 0;
+  z-index: 10;            /* sits above other content */
+  display: flex;          /* lays children out in a row */
+  justify-content: space-between;  /* logo left, toggle right */
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: 'JetBrains Mono', monospace;  /* monospace = techy feel */
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+/* The light/dark button. */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;     /* makes it a circle */
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  cursor: pointer;        /* shows the hand pointer on hover */
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  transform: scale(1.08); /* tiny grow effect on hover */
+}
+
+
+/* ---------------------------------------------------------------------------
+   4. HERO (big intro)
+--------------------------------------------------------------------------- */
+.hero {
+  /* min-height makes the hero fill most of the first screen.
+     calc(100vh - 73px) = full viewport height minus the header height. */
+  min-height: calc(100vh - 73px);
+  display: flex;
+  flex-direction: column;     /* stack children vertically */
+  justify-content: center;    /* centre them vertically */
+  align-items: flex-start;    /* line them up on the left */
+  max-width: var(--max-width);
+  margin: 0 auto;             /* centre the whole block horizontally */
+  padding: 2rem 1.5rem;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.hero-name {
+  font-size: clamp(2.5rem, 8vw, 4.5rem); /* clamp = responsive size: min, ideal, max */
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-tagline {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;            /* space between the buttons */
+  margin-top: 2rem;
+  flex-wrap: wrap;      /* buttons drop to next line on tiny screens */
+}
+
+
+/* ----- Reusable button styles ----- */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);  /* lifts up slightly on hover */
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+
+/* ---------------------------------------------------------------------------
+   5. GENERIC SECTION STYLES (shared by About / Projects / Contact)
+--------------------------------------------------------------------------- */
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;          /* centre horizontally */
+  padding: 4rem 1.5rem;    /* breathing room top/bottom */
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  /* A small accent underline using a left border on a padded title. */
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+}
+
+
+/* ---------------------------------------------------------------------------
+   6. ABOUT
+--------------------------------------------------------------------------- */
+.about-text p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+
+/* ---------------------------------------------------------------------------
+   7. PROJECTS
+--------------------------------------------------------------------------- */
+.project-grid {
+  display: grid;
+  /* auto-fill + minmax = cards automatically wrap into columns that fit. */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  background-color: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.project-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.project-link {
+  font-weight: 600;
+  color: var(--accent);
+}
+/* A "disabled" look for the placeholder link (no real destination yet). */
+.project-link-disabled {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+
+/* ---------------------------------------------------------------------------
+   8. CONTACT
+--------------------------------------------------------------------------- */
+.contact-intro {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.contact-item:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);  /* slides right a touch on hover */
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+  width: 1.6rem;
+  text-align: center;
+  /* For the "in" LinkedIn text icon, give it a monospace bold look. */
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.contact-label {
+  font-weight: 600;
+  min-width: 70px;
+}
+
+.contact-value {
+  color: var(--text-muted);
+  /* word-break stops long emails from overflowing on small screens. */
+  word-break: break-all;
+}
+
+
+/* ---------------------------------------------------------------------------
+   9. FOOTER
+--------------------------------------------------------------------------- */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+
+/* ---------------------------------------------------------------------------
+   10. MOBILE RESPONSIVENESS
+   ---------------------------------------------------------------------------
+   A "media query" applies styles only under a condition — here, screens
+   600px wide or narrower (phones). We make buttons full-width so they're
+   easy to tap.
+--------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn {
+    text-align: center;
+  }
+  .contact-item {
+    flex-wrap: wrap;  /* let the value drop below the label on tiny screens */
+  }
+}

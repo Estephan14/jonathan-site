@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  index.html  —  Jonathan Estephan's personal website
+  ============================================================================
+  This is the STRUCTURE of the page (the skeleton).
+  - HTML = content & structure  (this file)
+  - CSS  = looks & layout       (styles.css)
+  - JS   = behaviour/interaction (script.js)
+
+  The page is a single-page site with these sections, in order:
+    1. <header>   the top bar (your name + light/dark toggle)
+    2. <section id="hero">     the big intro (name + tagline)
+    3. <section id="about">    a few sentences about you
+    4. <section id="projects"> placeholder ready for your project later
+    5. <section id="contact">  email, phone, LinkedIn
+    6. <footer>   small print at the bottom
+  ============================================================================
+-->
+<html lang="en">
+
+<head>
+  <!-- charset = which characters the page understands. utf-8 supports almost everything. -->
+  <meta charset="UTF-8" />
+
+  <!-- This line makes the site resize nicely on phones (very important for recruiters on mobile). -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- The text shown in the browser tab and in Google search results. -->
+  <title>Jonathan Estephan — Engineering Student &amp; Maker</title>
+
+  <!-- A one-line description search engines show under the title. -->
+  <meta name="description"
+    content="Jonathan Estephan — Engineering Student and Maker. Get in touch about projects and opportunities." />
+
+  <!-- Link to our stylesheet (the file that controls how everything looks). -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Load a clean font from Google Fonts. 'Inter' for body text, 'JetBrains Mono' for techy accents. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ======================================================================
+       1. HEADER  —  sticky bar at the very top
+       ====================================================================== -->
+  <header class="site-header">
+    <!-- Your initials act as a small logo on the left. -->
+    <a href="#hero" class="logo">JE</a>
+
+    <!-- The light/dark toggle button on the right.
+         The aria-label is read aloud by screen readers (accessibility). -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode">
+      <!-- The icon text is swapped by script.js when clicked. -->
+      <span id="theme-icon">🌙</span>
+    </button>
+  </header>
+
+  <!-- ======================================================================
+       2. HERO  —  the first big thing visitors see
+       ====================================================================== -->
+  <section id="hero" class="hero">
+    <!-- Small monospace line above the name — a subtle "techy" touch. -->
+    <p class="hero-eyebrow">&lt;hello world /&gt;</p>
+
+    <!-- The main heading. There should only ever be ONE <h1> per page. -->
+    <h1 class="hero-name">Jonathan Estephan</h1>
+
+    <!-- The tagline under your name. -->
+    <p class="hero-tagline">Engineering Student &amp; Maker</p>
+
+    <!-- Call-to-action buttons. The first is "primary" (filled), the rest are "ghost" (outline). -->
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+      <a href="#about" class="btn btn-ghost">About me</a>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       3. ABOUT  —  short bio
+       ====================================================================== -->
+  <section id="about" class="section">
+    <h2 class="section-title">About</h2>
+    <div class="about-text">
+      <!-- TODO (Jonathan): replace this placeholder with your own words. -->
+      <p>
+        I'm an engineering student who loves building things — from software to
+        hardware. I learn best by making real projects and figuring out how every
+        piece fits together.
+      </p>
+      <p>
+        I'm currently open to opportunities and collaborations. If you think we
+        might be a good fit, I'd love to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       4. PROJECTS  —  placeholder, ready to fill in once your project is done
+       ====================================================================== -->
+  <section id="projects" class="section">
+    <h2 class="section-title">Projects</h2>
+
+    <!-- This is a "card grid". Add more <article class="project-card"> blocks later. -->
+    <div class="project-grid">
+
+      <!-- ----- One project card (placeholder) ----- -->
+      <article class="project-card">
+        <p class="project-tag">Coming soon</p>
+        <h3 class="project-title">Project in progress</h3>
+        <p class="project-desc">
+          I'm finishing a project right now. A write-up, photos, and a link will
+          live here soon — check back!
+        </p>
+        <!-- When ready, turn this into a real link: <a href="..." class="project-link">View project →</a> -->
+        <span class="project-link project-link-disabled">Details soon →</span>
+      </article>
+
+      <!--
+        ===== HOW TO ADD A REAL PROJECT LATER =====
+        Copy the block below, remove the comment markers, and fill it in:
+
+        <article class="project-card">
+          <p class="project-tag">Hardware · 2026</p>
+          <h3 class="project-title">My Project Name</h3>
+          <p class="project-desc">One or two sentences about what it does.</p>
+          <a href="https://link-to-project" class="project-link">View project →</a>
+        </article>
+      -->
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       5. CONTACT  —  the main goal of the site
+       ====================================================================== -->
+  <section id="contact" class="section contact">
+    <h2 class="section-title">Get in touch</h2>
+    <p class="contact-intro">The fastest ways to reach me:</p>
+
+    <div class="contact-list">
+      <!-- Email: the "mailto:" makes it open the visitor's email app when clicked. -->
+      <a class="contact-item" href="mailto:estephanjonathan@gmail.com">
+        <span class="contact-icon">✉️</span>
+        <span class="contact-label">Email</span>
+        <span class="contact-value">estephanjonathan@gmail.com</span>
+      </a>
+
+      <!-- Phone: "tel:" lets phones dial directly when tapped. -->
+      <a class="contact-item" href="tel:+4916235209 61">
+        <span class="contact-icon">📞</span>
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">+49 162 3520961</span>
+      </a>
+
+      <!-- LinkedIn: target="_blank" opens it in a new tab; rel="noopener" is a safety best-practice. -->
+      <a class="contact-item" href="https://www.linkedin.com/in/jonathan-estephan-96b129334/"
+        target="_blank" rel="noopener">
+        <span class="contact-icon">in</span>
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">jonathan-estephan</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       6. FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <!-- The year is filled in automatically by script.js so it's never out of date. -->
+    <p>© <span id="year"></span> Jonathan Estephan</p>
+  </footer>
+
+  <!-- Load the JavaScript LAST so the HTML above already exists when the script runs. -->
+  <script src="script.js"></script>
+</body>
+
+</html>
