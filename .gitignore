@@ -17,3 +17,11 @@ desktop.ini      # Windows folder settings
 
 # Node dependencies (we don't use any, but this is here just in case)
 node_modules/
+
+.vercel
+
+# Private job-application material — keep OFF the public site.
+LETTER.html
+LETTER.md
+weaviate-challenge.html
+weaviate-technical-challenge-jonathan-estephan.pdf
