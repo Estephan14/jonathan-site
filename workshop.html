@@ -1,0 +1,149 @@
+<!doctype html>
+<!--
+  THE WORKSHOP — a PRIVATE preview of a portfolio "command center" hub that
+  presents Jonathan's AI projects as one universe. Lives on the Jarvis project
+  (jarvis-seven-ruddy.vercel.app/workshop) so his live portfolio is untouched.
+  If he likes it, this ports onto jonathanestephan.com. Self-contained, one file.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>The Workshop — Jonathan Estephan</title>
+    <meta name="description" content="The workshop: an AI you can talk to, search with, and trust. Jarvis, Sermon Search, Pinocchio Bench, and the Mark I HUD — one universe by Jonathan Estephan." />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root { color-scheme: dark; }
+      body {
+        font-family: "SF Mono", "Cascadia Mono", Consolas, Menlo, monospace;
+        color: #f0e2cf; background: radial-gradient(circle at 50% 12%, #171008 0%, #070503 60%, #030201 100%);
+        min-height: 100vh; overflow-x: hidden;
+      }
+      .wrap { max-width: 1000px; margin: 0 auto; padding: 2.4rem 1.2rem 5rem; }
+
+      /* ---- hero ---- */
+      header { text-align: center; padding-top: max(1rem, env(safe-area-inset-top)); }
+      .kicker { color: #907757; letter-spacing: 4px; font-size: 0.72rem; text-transform: uppercase; }
+      h1 {
+        margin-top: 0.6rem; font-weight: 500; letter-spacing: 3px; font-size: clamp(1.6rem, 6vw, 2.6rem);
+        color: #ffc27d; text-shadow: 0 0 26px rgba(255, 170, 80, 0.4);
+      }
+      .tagline { color: #c2a17c; margin: 0.8rem auto 0; max-width: 34rem; font-size: 0.95rem; line-height: 1.6; }
+
+      /* ---- the reactor centerpiece ---- */
+      .reactor { position: relative; width: 190px; height: 190px; margin: 2.2rem auto 1.4rem; perspective: 600px; }
+      .halo {
+        position: absolute; inset: -20%; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 176, 88, 0.34), transparent 55%), radial-gradient(circle, rgba(255, 122, 30, 0.16), transparent 72%);
+        filter: blur(18px); animation: pulse 4s ease-in-out infinite;
+      }
+      .core {
+        position: absolute; inset: 33%; border-radius: 50%;
+        background: radial-gradient(circle at 42% 36%, #fffdf7 0%, #ffedc8 26%, #ffc879 55%, #ff8d1f 78%, rgba(255, 122, 20, 0) 100%);
+        box-shadow: 0 0 28px 8px rgba(255, 158, 60, 0.55); animation: pulse 3.2s ease-in-out infinite;
+      }
+      .globe { position: absolute; inset: 14%; transform-style: preserve-3d; animation: tumble 24s linear infinite; }
+      .ring { position: absolute; inset: 0; border-radius: 50%; border: 1px dashed rgba(255, 187, 105, 0.5); }
+      .m1 { transform: rotateY(0deg); } .m2 { transform: rotateY(36deg); } .m3 { transform: rotateY(72deg); }
+      .m4 { transform: rotateY(108deg); } .m5 { transform: rotateY(144deg); }
+      .p1 { transform: rotateX(90deg) translateZ(24px) scale(0.92); border-style: solid; border-color: rgba(255, 187, 105, 0.28); }
+      .p2 { transform: rotateX(90deg) translateZ(-24px) scale(0.92); border-style: solid; border-color: rgba(255, 187, 105, 0.28); }
+      @keyframes tumble { from { transform: rotateX(-16deg) rotateY(0); } to { transform: rotateX(-16deg) rotateY(360deg); } }
+      @keyframes pulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+      /* ---- module grid ---- */
+      .modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-top: 2.6rem; }
+      a.module {
+        display: block; text-decoration: none; color: inherit; position: relative;
+        border: 1px solid #3a2c18; border-radius: 0.8rem; padding: 1.2rem 1.2rem 1.3rem;
+        background: linear-gradient(180deg, rgba(255, 180, 84, 0.05), rgba(255, 180, 84, 0.015));
+        transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+      }
+      a.module:hover { transform: translateY(-3px); border-color: rgba(255, 180, 84, 0.5); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 24px rgba(255, 170, 80, 0.12); }
+      .m-top { display: flex; align-items: center; justify-content: space-between; }
+      .m-icon { width: 30px; height: 30px; color: #ffc27d; }
+      .m-tag { font-size: 0.62rem; letter-spacing: 1.5px; color: #8f7a5c; border: 1px solid #3a2c18; border-radius: 1rem; padding: 0.15rem 0.55rem; }
+      .m-title { margin-top: 0.8rem; font-size: 1.02rem; color: #ffe7c4; letter-spacing: 0.5px; }
+      .m-desc { margin-top: 0.4rem; font-size: 0.82rem; line-height: 1.55; color: #b7a184; }
+      .m-go { margin-top: 0.9rem; font-size: 0.75rem; color: #ffb968; letter-spacing: 1px; }
+
+      footer { text-align: center; margin-top: 3rem; color: #7a6a52; font-size: 0.78rem; line-height: 1.8; }
+      footer a { color: #ffb968; text-decoration: none; }
+      .preview-note {
+        margin: 0 auto 2rem; max-width: 40rem; text-align: center; font-size: 0.72rem; color: #6e5c40;
+        border: 1px dashed #3a2c18; border-radius: 0.6rem; padding: 0.5rem 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <p style="text-align:center"><a href="index.html" style="color:#907757;text-decoration:none;font-size:0.72rem;letter-spacing:2px">← BACK TO PORTFOLIO</a></p>
+
+      <header>
+        <p class="kicker">The Workshop</p>
+
+        <div class="reactor" aria-hidden="true">
+          <span class="halo"></span>
+          <span class="globe">
+            <i class="ring m1"></i><i class="ring m2"></i><i class="ring m3"></i><i class="ring m4"></i><i class="ring m5"></i>
+            <i class="ring p1"></i><i class="ring p2"></i>
+          </span>
+          <span class="core"></span>
+        </div>
+
+        <h1>I build AI you can talk&nbsp;to, search&nbsp;with, and trust.</h1>
+        <p class="tagline">
+          Four systems, one universe — a voice assistant with a real toolbelt, a semantic search engine,
+          a benchmark that catches AI lying, and an Iron-Man-style HUD. Everything below is live. Try it.
+        </p>
+      </header>
+
+      <div class="modules">
+        <a class="module" href="https://jarvis-seven-ruddy.vercel.app/demo.html" target="_blank" rel="noopener">
+          <div class="m-top">
+            <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/></svg>
+            <span class="m-tag">LIVE · VOICE AI</span>
+          </div>
+          <div class="m-title">J.A.R.V.I.S.</div>
+          <div class="m-desc">A personal AI you talk to. Reasoning brain, persistent memory, and real tools — calendar, music, reminders, web watches, a morning brief. He even looks through the camera and tells you what he sees.</div>
+          <div class="m-go">Try the live demo →</div>
+        </a>
+
+        <a class="module" href="https://jarvis-seven-ruddy.vercel.app/sermons" target="_blank" rel="noopener">
+          <div class="m-top">
+            <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <span class="m-tag">LIVE · VECTOR RAG</span>
+          </div>
+          <div class="m-title">Sermon Search</div>
+          <div class="m-desc">Ask a question in plain English; get the exact moments 850+ sermons answered it — deep-linked to the second on YouTube. Embeddings, chunking, and a vector store, built from parts.</div>
+          <div class="m-go">Search it →</div>
+        </a>
+
+        <a class="module" href="https://jarvis-seven-ruddy.vercel.app/bench" target="_blank" rel="noopener">
+          <div class="m-top">
+            <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 4-6"/></svg>
+            <span class="m-tag">LIVE · AI EVAL</span>
+          </div>
+          <div class="m-title">Pinocchio Bench</div>
+          <div class="m-desc">My assistant once claimed it did something it hadn't — so I benchmarked 9 models to find which ones lie about their actions. A live leaderboard, a verbatim "lie gallery," reproducible in one command.</div>
+          <div class="m-go">See who lies →</div>
+        </a>
+
+        <a class="module" href="https://jarvis-seven-ruddy.vercel.app/hud" target="_blank" rel="noopener">
+          <div class="m-top">
+            <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span class="m-tag">LIVE · COMPUTER VISION</span>
+          </div>
+          <div class="m-title">Mark I HUD</div>
+          <div class="m-desc">An Iron-Man heads-up display in the browser: point your camera, and AI targeting brackets lock onto what it sees while Jarvis narrates. The Mark I — the glasses are the Mark II.</div>
+          <div class="m-go">Suit up →</div>
+        </a>
+      </div>
+
+      <footer>
+        Jonathan Estephan · Mechatronics Engineering, Berlin<br />
+        <a href="https://jonathanestephan.com">jonathanestephan.com</a> · <a href="https://github.com/Estephan14">github.com/Estephan14</a>
+      </footer>
+    </div>
+  </body>
+</html>
