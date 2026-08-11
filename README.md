@@ -85,13 +85,21 @@ The tag line is `Live · 2026`, `Built · 2026`, `Published · 2026`, or
 
 ### The linked pair pattern
 
-Jarvis and Discipline are **one system**, so they're shown as a pair rather than
-two unrelated cards: a `.project-pair` wrapper that spans the full grid row
+Some projects belong together, so they're shown as a pair rather than as two
+unrelated cards: a `.project-pair` wrapper that spans the full grid row
 (`grid-column: 1 / -1`), holding a two-column `.project-pair-cards` grid, with a
 captioned hairline underneath. It collapses to one column below 640px.
 
-Reuse it if two projects genuinely belong together — otherwise a normal card is
-the right call.
+Two pairs use it:
+
+- **Jarvis + Discipline** — *"One system — Jarvis holds the rules, Discipline
+  shows them."* One codebase powering two front ends.
+- **Pinocchio Bench + agent-tripwire** — *"One story — Pinocchio Bench measures
+  the problem, agent-tripwire fixes it."* A failure found and quantified, then
+  the guard shipped against it.
+
+Reuse it only when the link is real. Two projects that merely share a topic are
+better as normal cards — the pattern earns its weight by being rare.
 
 ---
 
@@ -120,23 +128,17 @@ done.**
 | Project | What it is | Live | Code | Local |
 | ------- | ---------- | ---- | ---- | ----- |
 | **Pinocchio Bench** | A benchmark for AI agents that lie. 9 models × 10 scenarios × 3 trials = 270 episodes against mock tools, recording what each model *called* vs. what it *claimed*. Ranked by fabrication rate, ascending. | [/bench](https://jarvis-seven-ruddy.vercel.app/bench) | [pinocchio-bench](https://github.com/Estephan14/pinocchio-bench) (public) | `Desktop/Code/pinocchio-bench` |
+| **agent-tripwire** | The fix the benchmark led to, shipped to production twice. Snapshots whatever an action should change, then re-checks after the agent replies — nothing moved means the claim was fabricated, so the reply is swapped for an honest failure. Zero dependencies, no LLM judge. | — | [agent-tripwire](https://github.com/Estephan14/agent-tripwire) (public) | `Desktop/Code/agent-tripwire` |
 | **Sermon Search** | Semantic search over 850+ talks — OpenAI embeddings, sentence-aligned chunking, LanceDB vector store, deep-links to the exact second on YouTube. **This is the RAG project.** | [/sermons](https://jarvis-seven-ruddy.vercel.app/sermons) | [mosaik-sermon-search](https://github.com/Estephan14/mosaik-sermon-search) (public) | `Desktop/Code/mosaik-sermon-search` |
 | **Jarvis** | Voice assistant — hands-free speech in and out, a reasoning brain with memory, live web search, and tools (weather, news, calendar, music, reminders), plus a coding agent. | [demo](https://jarvis-seven-ruddy.vercel.app/demo.html) | `jarvis` (private) | `Desktop/Code/Jarvis` |
 | **Discipline** | Daily habit tracker (PWA). Streaks, either/or tasks, and sick days that excuse only *physical* work. Its rules live inside Jarvis, so tasks are voice-controlled. | [demo](https://discipline-app-lac.vercel.app/demo.html) | `Discipline-App` (private) | `C:/Users/HP/Discipline-App` |
-| **Mark I HUD** | An Iron Man-style heads-up display in the browser. | [/hud](https://jarvis-seven-ruddy.vercel.app/hud) | in the Jarvis repo (`hud.html`) | `Desktop/Code/Jarvis` |
+| **Mark I HUD** | An Iron Man-style heads-up display in the browser — camera, targeting brackets, Jarvis narrating. **Not finished.** The page and its `/hud/vision` endpoint are deployed, but the experience doesn't work end to end, so the card carries no link — just a "still building" status. Put the link back when it works. | (deployed but unlinked) | in the Jarvis repo (`hud.html`, `api/hud.js`) | `Desktop/Code/Jarvis` |
 | **Headcar** | A 4WD rover steered by Muse 2 EEG brain activity through an ESP32. | — | [TejasQ/headcar](https://github.com/TejasQ/headcar) | `Desktop/Code/Tejas/headcar` |
 | **Calculator** | Command-line Python calculator — a fundamentals exercise. | — | — | — |
 
-### Built but not on the site
-
-| Project | What it is | Code |
-| ------- | ---------- | ---- |
-| **agent-tripwire** | The *fix* that came out of Pinocchio Bench: a before/after ground-truth check that catches an agent claiming an action it never performed. Shipped to production twice. | [agent-tripwire](https://github.com/Estephan14/agent-tripwire) (public) — `Desktop/Code/agent-tripwire` |
-
-> **Worth doing:** Pinocchio Bench *measures* the problem and agent-tripwire
-> *fixes* it. Told together — "I found a failure mode, quantified it, then
-> shipped the guard" — that's a stronger story than either alone, and only half
-> of it is currently visible.
+Everything built so far is on the site. If that stops being true, add a
+"built but not shown" list back here — unlinked finished work is the main way
+things get lost.
 
 ### Notes on the demo pattern
 
@@ -153,7 +155,7 @@ a forked copy of the app.
 
 ## ✅ To-do
 
-- [ ] Add **agent-tripwire** to the site, ideally paired with Pinocchio Bench.
+- [ ] Finish the **Mark I HUD**, then restore its link and the `Live · 2026` tag.
 - [ ] Re-run Pinocchio Bench on current models — the numbers are from 2026-07-11
       and the page says so, but fresher is better.
 - [ ] Export/backup button for the Discipline app (still owed).

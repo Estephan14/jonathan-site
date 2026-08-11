@@ -778,7 +778,27 @@ html.light .theme-toggle .icon-sun {
   vertical-align: middle;
 }
 
-/* --- Linked project pair (Jarvis + Discipline) ----------------------------
+/* Stands in for the link on a card that isn't finished. Deliberately quiet —
+   it's a status, not something to click. The dot before it echoes the "in
+   progress" tag without needing another colour. */
+.project-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.project-soon::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* --- Linked project pairs (Jarvis + Discipline, Bench + tripwire) ---------
    Two cards presented as one system instead of two unrelated entries.
    `grid-column: 1 / -1` means "start at the first grid line, end at the last"
    — i.e. take the full width of .project-grid, so the pair gets its own row. */
