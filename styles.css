@@ -778,6 +778,60 @@ html.light .theme-toggle .icon-sun {
   vertical-align: middle;
 }
 
+/* --- Linked project pair (Jarvis + Discipline) ----------------------------
+   Two cards presented as one system instead of two unrelated entries.
+   `grid-column: 1 / -1` means "start at the first grid line, end at the last"
+   — i.e. take the full width of .project-grid, so the pair gets its own row. */
+.project-pair {
+  grid-column: 1 / -1;
+}
+
+/* Inside the wrapper, its own two-column grid. `1fr 1fr` = two equal columns.
+   `align-items: stretch` makes the shorter card grow to match the taller one,
+   so their bottom edges line up. */
+.project-pair-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  align-items: stretch;
+}
+
+/* On a phone there isn't room for two columns, so stack them into one. */
+@media (max-width: 640px) {
+  .project-pair-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The caption under the pair. Laid out with flex: line · label · line. */
+.project-pair-note {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.95rem;
+  padding: 0 0.3rem;
+}
+
+/* The two hairlines. `flex: 1` tells them to split whatever width the
+   label leaves over, so the label always sits centred between them. */
+.pair-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.pair-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  text-wrap: balance;     /* keeps the two lines even if it wraps */
+}
+.pair-label strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 
 /* ---------------------------------------------------------------------------
    8. CONTACT
@@ -1170,13 +1224,27 @@ html.reveal-on .reveal.is-visible {
   }
 
   /* ---- Projects ---- */
-  .project-grid {
+  .project-grid,
+  .project-pair-cards {
     display: block;
   }
   .project-card {
     margin: 0 0 15px;
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+  /* On paper the side-by-side layout is gone, so the connector lines would
+     be meaningless. Drop them and keep just the sentence. */
+  .pair-rule {
+    display: none;
+  }
+  .project-pair-note {
+    margin: -8px 0 15px;
+  }
+  .pair-label {
+    font-size: 9.5pt;
+    color: #2b2b2b;
+    text-align: left;
   }
   .project-title {
     font-size: 11.5pt;
