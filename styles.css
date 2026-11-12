@@ -1440,3 +1440,19 @@ html.reveal-on .reveal.is-visible {
     margin: 14px 0 8px;
   }
 }
+
+/* Two hero photos: the website shows me.jpeg, the printed CV shows me-cv.jpg
+   (already cropped to head and shoulders, so no zoom on it). */
+.avatar img.avatar-cv {
+  display: none;
+}
+@media print {
+  .avatar img.avatar-screen {
+    display: none;
+  }
+  .avatar img.avatar-cv {
+    display: block;
+    transform: none;
+    object-position: center;
+  }
+}
