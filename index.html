@@ -166,8 +166,8 @@
         <span class="pillar-kicker">01</span>
         <h3>Build it</h3>
         <p>
-          A hands-on engineer fluent in Python, C++, and microcontrollers, building real
-          hardware and AI projects. That foundation is what makes example projects and demos
+          A hands-on engineer fluent in Python, JavaScript, C++, and microcontrollers, building
+          real hardware and AI projects. That foundation is what makes example projects and demos
           credible.
         </p>
       </article>
@@ -211,10 +211,12 @@
         technology genuinely click for people.
       </p>
       <p>
-        Right now I'm going deep on AI-native search, vector databases, RAG, and open-source AI,
-        and looking for ways to turn what I learn into clear writing, sharp visuals, and example
-        projects. I don't claim to know everything yet, and that's exactly why I want to grow as a
-        developer advocate: building in public and learning out loud.
+        Right now I'm going deep on AI agents: how they use tools, how to keep them honest, and how
+        to make them quick enough to hold a conversation with. That's the thread running through
+        Jarvis, Pinocchio Bench and agent-tripwire, alongside AI-native search, vector databases
+        and RAG. I don't claim to know everything yet, and that's exactly why I want to grow as a
+        developer advocate: building in public, learning out loud, and turning what I learn into
+        clear writing, demos and talks.
       </p>
     </div>
   </section>
@@ -259,26 +261,10 @@
           <p class="xp-org">Smartech Berlin (KaDeWe)</p>
           <p class="xp-meta">Oct 2024 – Present · Berlin, Germany</p>
           <ul>
-            <li><strong>#1 seller across all of Smartech's European stores in Q4 2025</strong>, and again in March 2025.</li>
+            <li><strong>#1 seller across all of Smartech's European stores in March 2025</strong>, and again in Q4 2025.</li>
             <li>Top 5 sales associate for Q4 2024 and Q1 2025.</li>
             <li>Secured a collaboration between Smartech and DJI.</li>
             <li>Translated complex technical products into clear, persuasive pitches for a broad retail audience.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="xp-item">
-        <span class="xp-logo" style="--logo: #e2231a" aria-hidden="true">
-          <img class="xp-logo-img" src="logos/special-olympics.png" alt="" onerror="this.remove()" />
-          <span class="xp-logo-text">SO</span>
-        </span>
-        <div class="xp-body">
-          <p class="xp-role">Spokesperson &amp; Ambassador</p>
-          <p class="xp-org">Special Olympics</p>
-          <p class="xp-meta">2019 · Abu Dhabi, UAE</p>
-          <ul>
-            <li>Represented the team across all media relations and public communication.</li>
-            <li>Selected as the senior to represent both the school and the Special Olympics team.</li>
           </ul>
         </div>
       </article>
@@ -299,6 +285,22 @@
         </div>
       </article>
 
+      <article class="xp-item">
+        <span class="xp-logo" style="--logo: #e2231a" aria-hidden="true">
+          <img class="xp-logo-img" src="logos/special-olympics.png" alt="" onerror="this.remove()" />
+          <span class="xp-logo-text">SO</span>
+        </span>
+        <div class="xp-body">
+          <p class="xp-role">Spokesperson &amp; Ambassador</p>
+          <p class="xp-org">Special Olympics</p>
+          <p class="xp-meta">2019 · Abu Dhabi, UAE</p>
+          <ul>
+            <li>Represented the team across all media relations and public communication.</li>
+            <li>Selected as the senior to represent both the school and the Special Olympics team.</li>
+          </ul>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -310,6 +312,24 @@
 
     <!-- This is a "card grid". Add more <article class="project-card"> blocks later. -->
     <div class="project-grid">
+
+      <!-- ----- Selah (in progress) -----
+           No link on purpose: it's deployed (selah-seven-bay.vercel.app) but
+           Jonathan isn't sharing it yet, and the repo is private. Add a
+           "Try it live →" anchor here when he decides to. -->
+      <article class="project-card card">
+        <p class="project-tag">In progress · 2026</p>
+        <h3 class="project-title">Selah — A Voice for Scripture</h3>
+        <p class="project-desc">
+          A voice agent you talk to when something is heavy. It listens, finds a passage that
+          fits what you said, and reads it aloud. The model never quotes Scripture from memory,
+          because language models paraphrase and invent verses: every passage is fetched live
+          from the American Bible Society's API and read back word for word, with the translation
+          named. The page listens too. As you talk, the agent quietly reads your words for real
+          signs of hope, and the night sky over the page brightens toward morning only as you do.
+          Built on ElevenLabs Agents, on phone and desktop.
+        </p>
+      </article>
 
       <!-- ----- Current project ----- -->
       <article class="project-card card">
@@ -341,9 +361,12 @@
             <p class="project-tag">Live · 2026</p>
             <h3 class="project-title">Jarvis — Personal AI Assistant</h3>
             <p class="project-desc">
-              A voice assistant inspired by Iron Man's J.A.R.V.I.S. — you talk to it and it talks
-              back. A reasoning brain with persistent memory, live web search, and tools for weather,
-              news, calendar, music and more, plus a laptop coding agent that writes and runs code.
+              A voice assistant inspired by Iron Man's J.A.R.V.I.S. that I use every day, at home and
+              from my phone. Its brain is Claude Code running on my laptop through the Agent SDK, with
+              40+ tools of its own: it finds people in my iPhone contacts and messages them on WhatsApp,
+              sends email, takes down dictated lists, plays Spotify, and keeps my memory, reminders and
+              calendar. Replies stream sentence by sentence, so it starts speaking within two to three
+              seconds, and it only searches the web or thinks longer when asked.
             </p>
             <a href="https://jarvis-seven-ruddy.vercel.app/demo.html" class="project-link" target="_blank" rel="noopener">
               Try the live demo →
@@ -449,8 +472,8 @@
         </p>
       </div>
 
-      <!-- ----- Mark I HUD ----- -->
-      <article class="project-card card">
+      <!-- ----- Mark I HUD ----- (on the site, left off the printed CV until it works) -->
+      <article class="project-card card print-hide">
         <p class="project-tag">In progress · 2026</p>
         <h3 class="project-title">Mark I HUD — Iron Man Vision in the Browser</h3>
         <p class="project-desc">
@@ -464,8 +487,8 @@
         <p class="project-soon">Still building — demo coming soon</p>
       </article>
 
-      <!-- ----- Calculator ----- -->
-      <article class="project-card card">
+      <!-- ----- Calculator ----- (on the site, left off the printed CV) -->
+      <article class="project-card card print-hide">
         <p class="project-tag">In progress · 2026</p>
         <h3 class="project-title">Calculator — Command-Line Python</h3>
         <p class="project-desc">
@@ -499,7 +522,7 @@
             <li>A talk on the builder's era and vibe-coding: turning a wild idea into a working demo.</li>
           </ul>
           <!-- The talk itself, published on GitNation's channel. -->
-          <div style="position:relative;width:100%;max-width:560px;aspect-ratio:16/9;margin:1rem 0 0.9rem;border-radius:0.7rem;overflow:hidden;border:1px solid rgba(255,255,255,0.09)">
+          <div class="talk-video" style="position:relative;width:100%;max-width:560px;aspect-ratio:16/9;margin:1rem 0 0.9rem;border-radius:0.7rem;overflow:hidden;border:1px solid rgba(255,255,255,0.09)">
             <iframe style="position:absolute;inset:0;width:100%;height:100%;border:0"
               src="https://www.youtube-nocookie.com/embed/p3SiU_TGLPY"
               title="AI Can Mess Up Beautifully — Jonathan Estephan at GitNation"
@@ -569,14 +592,29 @@
       <p class="skill-group-title">Engineering &amp; AI</p>
       <ul class="skill-tags">
         <li>Python</li>
+        <li>JavaScript / Node.js</li>
         <li>C++</li>
         <li>C</li>
         <li>Arduino</li>
         <li>ESP32</li>
         <li>Mechatronics</li>
-        <li>AI / Machine Learning</li>
-        <li>Vector Databases &amp; RAG <span class="tag-note">(learning)</span></li>
+        <li>AI Agents &amp; Tool Use</li>
+        <li>Voice AI <span class="tag-note">(speech-to-text, text-to-speech)</span></li>
+        <li>Vector Databases &amp; RAG</li>
         <li>Rapid Prototyping</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <p class="skill-group-title">Platforms &amp; Tools</p>
+      <ul class="skill-tags">
+        <li>Claude Code &amp; Agent SDK</li>
+        <li>Claude, Gemini &amp; OpenAI APIs</li>
+        <li>ElevenLabs</li>
+        <li>Vercel</li>
+        <li>Redis <span class="tag-note">(Upstash)</span></li>
+        <li>LanceDB</li>
+        <li>Git &amp; GitHub</li>
       </ul>
     </div>
 

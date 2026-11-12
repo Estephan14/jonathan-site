@@ -1331,3 +1331,112 @@ html.reveal-on .reveal.is-visible {
     color: #666;
   }
 }
+
+/* ==========================================================================
+   12b. PRINT REFINEMENTS (2026-11-12) — what the saved-as-PDF CV needs on top
+   of section 12.
+   ========================================================================== */
+@media print {
+  /* Off the paper: the embedded talk video (prints as an error box), and the
+     cards marked print-hide (unfinished or minor projects stay on the site). */
+  .talk-video,
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Links: the on-screen label ("Try the live demo →") means nothing on paper,
+     so print just the address it points to, small and quiet. */
+  .project-link {
+    display: block;
+    font-size: 0 !important;
+    margin: 0 0 2px;
+  }
+  .project-link::after {
+    content: attr(href);
+    font-size: 8.5pt;
+    font-weight: 400;
+    color: #4a5a78;
+  }
+
+  /* The "One system / One story" captions: the body font, small and italic,
+     instead of the on-screen monospace. */
+  .project-pair-note,
+  .pair-label,
+  .pair-label strong {
+    font-family: 'Inter', system-ui, sans-serif !important;
+    letter-spacing: 0 !important;
+  }
+  .pair-label {
+    font-size: 9pt;
+    font-style: italic;
+    color: #555;
+  }
+  .pair-label strong {
+    font-weight: 600;
+    color: #25406e;
+  }
+
+  /* A touch tighter so the CV lands on two full pages. */
+  .project-card {
+    margin-bottom: 11px;
+  }
+  .project-desc {
+    margin-bottom: 3px;
+  }
+  .xp-item {
+    margin-bottom: 12px;
+  }
+}
+@media print {
+  @page {
+    margin: 14mm 15mm;
+  }
+  html,
+  body {
+    font-size: 9.5pt;
+    line-height: 1.45;
+  }
+  .project-desc,
+  .xp-item ul {
+    font-size: 9.5pt;
+  }
+  .project-title,
+  .xp-role,
+  .xp-org {
+    font-size: 11pt;
+  }
+  .section-title {
+    margin: 16px 0 9px;
+  }
+  /* Let a long project card split across pages rather than leave a gap. */
+  .project-card {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+  .project-title {
+    break-after: avoid;
+  }
+}
+@media print {
+  @page {
+    margin: 12mm 15mm;
+  }
+  html,
+  body {
+    line-height: 1.4;
+  }
+  /* Two addresses for one project share a line. */
+  .project-link {
+    display: inline-block;
+    margin: 0 14px 2px 0;
+  }
+  .xp-item li {
+    margin-bottom: 3px;
+  }
+  .xp-meta {
+    margin: 2px 0 5px;
+  }
+  .section-title {
+    margin: 14px 0 8px;
+  }
+}
