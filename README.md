@@ -35,6 +35,7 @@ the live site.
 | `index.html` | The whole site — structure and content. |
 | `styles.css` | All the looks: colours, layout, light/dark themes, mobile, and a print stylesheet. |
 | `script.js` | The behaviour (see below). |
+| `writing/` | Technical posts. `writing/index.html` lists them; each post is a folder with its own `index.html` (clean URL, e.g. `/writing/agents-that-lie/`). `writing/writing.css` adds the article styles on top of `styles.css`. To add a post, copy `writing/agents-that-lie/` and add a card at the top of the list. |
 | `workshop.html` | "The Workshop" — a hub page for the projects. Linked from the hero. |
 | `LETTER.html` / `LETTER.md` | A cover letter, as a standalone page. |
 | `weaviate-challenge.html` + `.pdf` | The Weaviate Developer Advocate intern challenge submission. |
@@ -57,7 +58,9 @@ the live site.
 ### Page sections, in order
 
 `hero` → `value` → `about` → `experience` → `projects` → `speaking` →
-`education` → `skills` → `contact`
+`writing` → `education` → `skills` → `contact`
+
+The Writing section is left off the printed CV (it would push it to a third page).
 
 **Printing (Ctrl/Cmd+P) produces a clean two-page CV** (A4; checked 2026-11-12). Cards with `class="print-hide"` (Mark I HUD, Calculator) and the talk video stay off the paper; links print as their bare addresses. `styles.css` has a large
 print section that hides the hero, nav, and decoration, and reflows Experience,

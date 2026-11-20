@@ -321,6 +321,8 @@ html.light .theme-toggle .icon-sun {
 .site-header.scrolled .nav a:nth-child(3) { transition-delay: 0.12s; }
 .site-header.scrolled .nav a:nth-child(4) { transition-delay: 0.16s; }
 .site-header.scrolled .nav a:nth-child(5) { transition-delay: 0.20s; }
+.site-header.scrolled .nav a:nth-child(6) { transition-delay: 0.24s; }
+.site-header.scrolled .nav a:nth-child(7) { transition-delay: 0.28s; }
 
 
 /* ----- Mobile dock (floating bottom toolbar; phones only) ----- */
@@ -597,6 +599,10 @@ html.light .theme-toggle .icon-sun {
 .xp-body {
   flex: 1 1 auto;
   min-width: 0;     /* lets long text wrap instead of overflowing */
+}
+/* Two links in a row (Speaking, Writing): a gap so they don't read as one. */
+.xp-body .project-link + .project-link {
+  margin-left: 1.4rem;
 }
 
 /* The company "logo": a monogram chip tinted with the brand colour (--logo).
@@ -1454,5 +1460,15 @@ html.reveal-on .reveal.is-visible {
     display: block;
     transform: none;
     object-position: center;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   PRINT: the Writing section stays off the paper. The CV is tuned to exactly
+   two A4 pages, and even one line more spills onto a third.
+--------------------------------------------------------------------------- */
+@media print {
+  #writing {
+    display: none !important;
   }
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  writing/index.html  -  the list of posts
+  ============================================================================
+  Lives at jonathanestephan.com/writing/
+  To add a post: make a folder next to agents-that-lie/ with its own
+  index.html (copy that one as a starting point), then copy the
+  <a class="post-item card"> below and put the newest post at the TOP.
+  ============================================================================
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing | Jonathan Estephan</title>
+  <meta name="description" content="Technical writing by Jonathan Estephan: AI agents, evaluation, and the things I build." />
+  <link rel="canonical" href="https://jonathanestephan.com/writing/" />
+
+  <link rel="icon" type="image/png" href="../favicon-avatar.png" />
+  <link rel="apple-touch-icon" href="../favicon-avatar.png" />
+
+  <!-- Saved theme first, so there's no flash of the wrong one. -->
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');
+    } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="writing.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <header class="site-header scrolled">
+    <a href="../" class="logo" aria-label="Jonathan Estephan, home">
+      <span class="logo-text">JE</span>
+      <span class="logo-photo"><img src="../me.jpeg" alt="" /></span>
+    </a>
+
+    <nav class="nav" aria-label="Site">
+      <a href="../">Home</a>
+      <a href="./" class="current">Writing</a>
+    </nav>
+
+    <div class="socials">
+      <a class="social-link" href="https://www.linkedin.com/in/jonathan-estephan-96b129334/"
+        target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.25 8h4.5V24H.25zM8 8h4.3v2.2h.06c.6-1.1 2.06-2.25 4.24-2.25 4.53 0 5.37 2.98 5.37 6.86V24h-4.5v-6.32c0-1.51-.03-3.45-2.1-3.45-2.1 0-2.42 1.64-2.42 3.34V24H8z"/></svg>
+      </a>
+      <a class="social-link" href="https://x.com/tightestwinter"
+        target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a class="social-link" href="https://github.com/Estephan14"
+        target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      </a>
+    </div>
+
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
+    </button>
+  </header>
+
+  <main class="post">
+    <p class="post-kicker">Writing</p>
+    <h1 class="post-title">Notes from the workshop</h1>
+    <p class="post-dek">
+      Write-ups of things I've built: what I set out to do, what the data said, and what I got
+      wrong along the way.
+    </p>
+
+    <div class="post-list">
+      <a class="post-item card" href="agents-that-lie/">
+        <p class="post-kicker">20 November 2026 · 7 min read</p>
+        <h2>"Very good, sir. It's scheduled."</h2>
+        <p>
+          I measured how often AI agents say they did something they never did, read every
+          flagged case by hand (half were my grader's fault), and built a small check that stops
+          it in production.
+        </p>
+        <span class="project-link">Read it →</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year">2026</span> Jonathan Estephan · <a href="../">jonathanestephan.com</a></p>
+  </footer>
+
+  <script>
+    var root = document.documentElement;
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var next = root.classList.contains('light') ? 'dark' : 'light';
+      root.classList.toggle('light', next === 'light');
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
